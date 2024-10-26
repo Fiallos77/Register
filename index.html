@@ -3,29 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Campeonato Soccer-Tennis</title>
+    <title>Registration for the Soccer Tennis Championship</title>
     <style>
-        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; flex-direction: column; }
-        .container { max-width: 400px; width: 100%; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
-        label { display: block; margin-top: 10px; }
-        input[type="text"], input[type="email"], input[type="tel"] { width: 100%; padding: 8px; margin-top: 5px; }
-        button { margin-top: 15px; padding: 10px; width: 100%; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        /* Estilos generales y fondo */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: url('https://passionsoccer.ca/cdn/shop/products/16B7-kwik-goal-mini-soccer-tennis_1000x.jpg?v=1616440431') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        .container {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #e0e6ed;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            z-index: 1;
+            position: relative;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        h1 {
+            color: #f1f1f1;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 2;
+        }
+        h2 {
+            color: #333;
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        input[type="text"], input[type="email"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #d1d9e0;
+            border-radius: 5px;
+            font-size: 1em;
+            color: #333;
+        }
+        button {
+            margin-top: 15px;
+            padding: 12px;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #43a047;
+            transform: scale(1.02);
+        }
+        #resultMessage {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #4CAF50;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
+    <div class="overlay"></div>
+    <h1>¡Sign up for the Soccer-Tennis Championship!</h1>
     <div class="container">
-        <h2>Registro para Campeonato de Soccer-Tennis</h2>
+        <h2>Team Registration Form</h2>
         <form id="registerForm">
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" required>
+            <label for="teamName">Nombre del Equipo:</label>
+            <input type="text" id="teamName" required>
+
+            <label for="player1FirstName">Nombre del Jugador 1:</label>
+            <input type="text" id="player1FirstName" required>
             
-            <label for="email">Correo Electrónico:</label>
+            <label for="player1LastName">Apellido del Jugador 1:</label>
+            <input type="text" id="player1LastName" required>
+            
+            <label for="player2FirstName">Nombre del Jugador 2:</label>
+            <input type="text" id="player2FirstName" required>
+            
+            <label for="player2LastName">Apellido del Jugador 2:</label>
+            <input type="text" id="player2LastName" required>
+            
+            <label for="email">Correo Electrónico del Equipo:</label>
             <input type="email" id="email" required>
             
-            <label for="phone">Teléfono:</label>
+            <label for="phone">Teléfono de Contacto:</label>
             <input type="tel" id="phone" required>
             
-            <button type="submit">Registrar</button>
+            <button type="submit">Registrar Equipo</button>
         </form>
         
         <div id="resultMessage"></div>
@@ -39,12 +140,16 @@
             event.preventDefault();
             
             const data = {
-                name: document.getElementById("name").value,
+                teamName: document.getElementById("teamName").value,
+                player1FirstName: document.getElementById("player1FirstName").value,
+                player1LastName: document.getElementById("player1LastName").value,
+                player2FirstName: document.getElementById("player2FirstName").value,
+                player2LastName: document.getElementById("player2LastName").value,
                 email: document.getElementById("email").value,
                 phone: document.getElementById("phone").value,
             };
 
-            fetch("https://script.google.com/macros/s/AKfycby2qcTBXLPt0kG7rFuEXk84lTtu8uJlvfjQ5DGQl6BvJ3wLWttVrqerNdxMoDrnZI0ILg/exec", {
+            fetch("index.html", {
                 method: "POST",
                 mode: "no-cors",
                 headers: {
