@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Campeonato Soccer-Tennis</title>
+    <style>
+        body {
+            background-image: url('https://link-a-una-imagen-de-fondo-de-soccer.jpg');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Registro Soccer-Tennis</h2>
+    <form name="registration" method="POST" data-netlify="true" action="/thank-you.html">
+        <input type="text" name="team_name" placeholder="Nombre del Equipo" required>
+        <input type="text" name="player1_name" placeholder="Nombre Jugador 1" required>
+        <input type="text" name="player1_lastname" placeholder="Apellido Jugador 1" required>
+        <input type="text" name="player2_name" placeholder="Nombre Jugador 2" required>
+        <input type="text" name="player2_lastname" placeholder="Apellido Jugador 2" required>
+        <input type="email" name="email" placeholder="Correo Electrónico" required>
+        <input type="tel" name="phone" placeholder="Número de Teléfono" required>
+        <button type="submit">Registrar</button>
+    </form>
+</div>
+
+</body>
+</html>
