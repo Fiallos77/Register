@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Campeonato Soccer-Tennis</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+        .container { max-width: 400px; width: 100%; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        label { display: block; margin-top: 10px; }
+        input[type="text"], input[type="email"], input[type="tel"] { width: 100%; padding: 8px; margin-top: 5px; }
+        button { margin-top: 15px; padding: 10px; width: 100%; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registro para Campeonato de Soccer-Tennis</h2>
+        <form id="registerForm">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" required>
+            
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" required>
+            
+            <label for="phone">Teléfono:</label>
+            <input type="tel" id="phone" required>
+            
+            <button type="submit">Registrar</button>
+        </form>
+        
+        <div id="resultMessage"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById("registerForm");
+        const resultMessage = document.getElementById("resultMessage");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const data = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+            };
+
+            fetch("https://script.google.com/macros/s/AKfycby2qcTBXLPt0kG7rFuEXk84lTtu8uJlvfjQ5DGQl6BvJ3wLWttVrqerNdxMoDrnZI0ILg/exec", {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                resultMessage.textContent = "¡Registro exitoso!";
+                form.reset();
+            })
+            .catch(error => {
+                resultMessage.textContent = "Hubo un error en el registro, intenta nuevamente.";
+            });
+        });
+    </script>
+</body>
+</html>
